@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Блог{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1><a href="{{ url_for('index') }}">Мой Блог</a></h1>
+    <nav>
+        {% if session.get("user_id") %}
+            Привет, {{ session["username"] }} |
+            <a href="{{ url_for('posts.create_post') }}">Создать пост</a> |
+            <a href="{{ url_for('subs.feed') }}">Моя лента</a> |
+            <a href="{{ url_for('auth.logout') }}">Выход</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Вход</a> |
+            <a href="{{ url_for('auth.register') }}">Регистрация</a>
+        {% endif %}
+    </nav>
+    <hr>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
