@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Создать пост{% endblock %}
+{% block content %}
+<h2>Создать пост</h2>
+<form method="post">
+    <p><input type="text" name="title" placeholder="Заголовок"></p>
+    <p><textarea name="content" placeholder="Текст поста"></textarea></p>
+    <p><input type="text" name="tags" placeholder="Теги (через запятую)"></p>
+    <p><label><input type="checkbox" name="is_public" checked> Публичный</label></p>
+    <p><button type="submit">Опубликовать</button></p>
+</form>
+{% endblock %}
